@@ -2,7 +2,6 @@
 
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import { FC, ReactNode, useEffect, useRef, useState } from "react";
-import "./globals.scss";
 
 interface ILayoutClientProps {
   children: ReactNode;
@@ -14,17 +13,18 @@ const LayoutClient: FC<ILayoutClientProps> = ({ children }) => {
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
 
-  // ▶️ play / pause
+  // ▶️ play / pause вручную
   const togglePlay = () => {
     if (!audioRef.current) return;
 
     if (playing) {
       audioRef.current.pause();
+      setPlaying(false);
     } else {
-      audioRef.current.play().catch(() => {});
+      audioRef.current.play().then(() => {
+        setPlaying(true);
+      }).catch(() => {});
     }
-
-    setPlaying(!playing);
   };
 
   // 🔊 громкость
@@ -35,32 +35,30 @@ const LayoutClient: FC<ILayoutClientProps> = ({ children }) => {
     setVolume(v);
   };
 
-  // 🎵 автозапуск + разблокировка звука
+  // 🎵 запуск ТОЛЬКО после клика (работает на телефонах)
   useEffect(() => {
     if (!audioRef.current) return;
 
     const audio = audioRef.current;
 
-    // пробуем запустить без звука
-    audio.play().catch(() => {});
-
-    const enableSound = () => {
+    const startAudio = () => {
       audio.muted = false;
       audio.volume = volume;
 
-      audio.play().catch(() => {});
-      setPlaying(true);
+      audio.play()
+        .then(() => setPlaying(true))
+        .catch(() => {});
 
-      window.removeEventListener("click", enableSound);
-      window.removeEventListener("touchstart", enableSound);
+      document.removeEventListener("click", startAudio);
+      document.removeEventListener("touchstart", startAudio);
     };
 
-    window.addEventListener("click", enableSound);
-    window.addEventListener("touchstart", enableSound);
+    document.addEventListener("click", startAudio);
+    document.addEventListener("touchstart", startAudio);
 
     return () => {
-      window.removeEventListener("click", enableSound);
-      window.removeEventListener("touchstart", enableSound);
+      document.removeEventListener("click", startAudio);
+      document.removeEventListener("touchstart", startAudio);
     };
   }, []);
 
@@ -68,7 +66,13 @@ const LayoutClient: FC<ILayoutClientProps> = ({ children }) => {
     <ReactQueryProvider>
       <>
         {/* 🎵 ГЛОБАЛЬНАЯ МУЗЫКА */}
-        <audio ref={audioRef} src="/music.mp3" loop muted preload="auto" />
+        <audio
+          ref={audioRef}
+          src="/music.mp3"
+          loop
+          preload="auto"
+          muted
+        />
 
         {children}
       </>
