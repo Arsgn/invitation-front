@@ -1,0 +1,219 @@
+.page {
+  padding: 30px 20px;
+  background: #f8f6f2;
+  min-height: 100dvh;
+  overflow-y: auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background: white;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.wrapper {
+  min-height: 100dvh;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 25px 0 35px;
+  flex-wrap: wrap;
+}
+
+/* 🔥 карточка */
+.statBox {
+  position: relative;
+  min-width: 100px;
+  padding: 18px 16px;
+
+  border-radius: 18px;
+  text-align: center;
+
+  background: linear-gradient(145deg, #ffffff, #f3f3f3);
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+
+  transition: all 0.3s ease;
+}
+
+/* ✨ hover эффект */
+.statBox:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* 🔢 число */
+.statBox span {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+
+  background: linear-gradient(45deg, #b8965a, #d4af7f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 📄 текст */
+.statBox p {
+  font-size: 13px;
+  color: #777;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* 🎨 разные цвета (опционально) */
+.statBox:nth-child(1) span {
+  background: linear-gradient(45deg, #4caf50, #81c784);
+  -webkit-background-clip: text;
+}
+
+.statBox:nth-child(2) span {
+  background: linear-gradient(45deg, #e53935, #ef9a9a);
+  -webkit-background-clip: text;
+}
+
+.statBox:nth-child(3) span {
+  background: linear-gradient(45deg, #b8965a, #d4af7f);
+  -webkit-background-clip: text;
+}
+
+
+.searchBox {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 16px;
+
+  border-radius: 12px;
+  border: 1px solid #eee;
+
+  font-size: 14px;
+
+  background: #fafafa;
+  transition: 0.3s;
+}
+
+/* фокус как iOS */
+.searchInput:focus {
+  outline: none;
+  border-color: #b8965a;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(184, 150, 90, 0.15);
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #b8965a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.info h3 {
+  margin: 0;
+}
+
+.info p {
+  margin: 3px 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.green {
+  background: #e6f7ec;
+  color: #2e7d32;
+}
+
+.red {
+  background: #fdecea;
+  color: #c62828;
+}
+
+.gray {
+  background: #eee;
+  color: #555;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.arrow {
+  font-size: 16px;
+}

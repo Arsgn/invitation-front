@@ -1,0 +1,788 @@
+.page {
+  font-family: "Playfair Display", serif;
+  background: #f8f6f2;
+  color: #2b2b2b;
+  min-height: 100dvh;
+  overflow-y: auto;
+  
+}
+.wrapper {
+  min-height: 100dvh;
+}
+
+/* 📸 ФОТО */
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 📸 ФОТО */
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ✨ ВИНЬЕТКА (мягче и дороже) */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(0,0,0,0) 35%,
+    rgba(0,0,0,0.65) 100%
+  );
+}
+
+/* 💎 ВЕРХНИЙ ТЕКСТ */
+.topText {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  text-align: center;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(60px, 10vw, 140px); /* 🔥 УМНЫЙ РАЗМЕР */
+  line-height: 1.1;
+  letter-spacing: 4px;
+
+  color: #ffffff;
+
+  text-shadow: 0 10px 40px rgba(0,0,0,0.85);
+}
+
+/* 💍 ИМЕНА — ЕЩЁ КРУПНЕЕ */
+.bottomNames {
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+  text-align: center;
+
+  font-family: "Playfair Display", serif;
+  // font-style: italic;
+
+  font-size: clamp(50px, 9vw, 110px); /* 🔥 ГИГАНТ */
+  letter-spacing: 6px;
+
+  color: #ffffff;
+
+  text-shadow: 0 10px 50px rgba(0,0,0,0.95);
+}
+
+/* ✨ & */
+.bottomNames span {
+  color: #d4af7f;
+  font-style: italic;
+  margin: 0 14px;
+  font-size: 0.7em;
+}
+
+/* ✨ лёгкая линия под именами */
+.bottomNames::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: #d4af7f;
+  margin: 15px auto 0;
+  opacity: 0.7;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 480px) {
+  .topText {
+    font-size: 45px;
+    font-style: italic;
+
+  }
+
+  .bottomNames {
+    font-size: 50px;
+    letter-spacing: 2px;
+  }
+}
+
+/* ОПИСАНИЕ */
+.description {
+  margin-top: 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ffffff;
+  opacity: 0.85;
+}
+
+.text h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.text p {
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* TIMER */
+.timerBlock {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.timerBlock h2 {
+  margin-bottom: 10px;
+}
+
+.timer {
+  font-size: 28px;
+  color: #b8965a;
+  font-weight: 600;
+}
+
+/* CALENDAR */
+.calendar {
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.calendar h2 {
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.day {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.active {
+  background: #b8965a;
+  color: white;
+  border-radius: 50%;
+}
+
+.date {
+  margin-top: 20px;
+  font-size: 16px;
+  padding-bottom: 20px;
+  color: #777;
+}
+
+/* PROGRAM */
+.program {
+  padding: 50px 20px;
+}
+
+.program h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #484848;
+}
+
+.programItem {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.programItem span {
+  font-weight: bold;
+}
+
+/* GALLERY */
+.gallery {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.gallery h2 {
+  margin-bottom: 20px;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.photos img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* FORM */
+.form {
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.buttons button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+
+  // background: white;
+}
+
+.buttons button:hover {
+  border-color: #b8965a;
+}
+
+.submit {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #b8965a;
+  color: white;
+  font-weight: 600;
+}
+
+/* MOBILE FIX */
+@media (max-width: 480px) {
+  .overlay h1 {
+    font-size: 24px;
+  }
+
+  .timer {
+    font-size: 22px;
+  }
+
+  .photos {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.program {
+  padding: 70px 20px;
+  background: #faf7f2;
+}
+
+.title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+.timeline {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.time {
+  min-width: 60px;
+  font-weight: bold;
+  color: #b8965a;
+  font-size: 16px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #b8965a;
+  border-radius: 50%;
+  margin-top: 6px;
+  position: relative;
+}
+
+.dot::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 2px;
+  height: 60px;
+  background: #e0d8c8;
+  transform: translateX(-50%);
+}
+
+.item:last-child .dot::after {
+  display: none;
+}
+
+.content h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.content p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.footerText {
+  text-align: center;
+  margin-top: 40px;
+  font-style: italic;
+  color: #b8965a;
+}
+
+.afterGallery {
+  padding: 60px 20px;
+  text-align: center;
+  background: #fdfbf7;
+}
+
+.afterGallery h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.afterGallery p {
+  max-width: 500px;
+  margin: 10px auto;
+  color: #666;
+  line-height: 1.6;
+}
+
+.signature {
+  margin-top: 20px;
+  font-style: italic;
+  color: #b8965a;
+}
+
+.guestsSection {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.guestsSection p {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.guestsBtn {
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: none;
+  background: #b8965a;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.guestsBtn:hover {
+  opacity: 0.85;
+}
+
+
+.title {
+  font-size: 42px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-family: "Playfair Display", serif;
+  color: #f3f3f3;
+}
+
+.and {
+  font-style: italic;
+  margin: 0 10px;
+  color: #c6a96b; // золото
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #696969;
+  font-style: italic;
+}
+
+.text {
+  margin-top: 20px;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 100;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.inviteSection {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.inviteTitl {
+  font-size: 26px;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.inviteTex {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #414141;
+  margin-bottom: 14px;
+}
+
+/* TIMER */
+
+.timerSection {
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.timerTitle {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+.timerBox {
+  display: inline-block;
+  padding: 20px 30px;
+  border-radius: 16px;
+
+  font-size: 22px;
+  font-weight: 600;
+
+  background: #f8f8f8;
+  border: 1px solid #eee;
+}
+
+.timerText {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #777;
+}
+
+.timerCircles {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #eee;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.circle span {
+  font-size: 20px;
+  font-weight: 600;
+  color: #b8965a;
+}
+
+.circle p {
+  font-size: 12px;
+  color: #777;
+}
+.btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* hover только если НЕ активна */
+.btn:not(.active):not(.activeDecline):hover {
+  border-color: #b8965a;
+}
+
+/* ✅ ПРИДУ */
+.active {
+  background: #b8965a;
+  color: #ffffff;
+  border: 1px solid #b8965a;
+  font-weight: 600;
+}
+
+/* ❌ НЕ ПРИДУ */
+.activeDecline {
+  background: #b8965a;
+  color: #ffffff;
+  border: 1px solid #b8965a;
+  font-weight: 600;
+}
+
+.bottomNames {
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ИМЕНА */
+.name {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  letter-spacing: 3px;
+  color: #f5f5f5;
+
+  text-shadow: 0 6px 25px rgba(0,0,0,0.7);
+}
+
+/* & знак */
+.and {
+  font-size: 28px;
+  color: #d4af7f;
+  font-style: italic;
+
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+/* линия */
+.line {
+  margin-top: 10px;
+  width: 80px;
+  height: 2px;
+
+  background: linear-gradient(90deg, transparent, #d4af7f, transparent);
+}
+
+.mapBtn {
+  bottom: 40px;
+  left: 50%;
+  margin-top: 25px;
+  padding: 12px 24px;
+  border-radius: 15px;
+  border: 0.2px solid #b8965a;
+  background: white;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    background: #b8965a;
+    color: white;
+    transition: 0.4s;
+  }
+}
+
+
+.mapText {
+  margin-top: 45px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #b8965a;
+  text-align: center;
+}
+
+.mapVenue {
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10px;
+  color: #3d3d3d;
+  letter-spacing: 1px;
+}
+
+.mapSubtext {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #777;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.musicBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #b8965a;
+    color: white;
+  }
+}
+
+// .overlay {
+//   position: fixed;
+//   inset: 0;
+//   background: radial-gradient(
+//       circle at top,
+//       rgba(255, 255, 255, 0.08),
+//       transparent 60%
+//     ),
+//     linear-gradient(
+//       180deg,
+//       rgba(20, 20, 20, 0.85),
+//       rgba(0, 0, 0, 0.95)
+//     );
+//   backdrop-filter: blur(8px);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   z-index: 999;
+//   color: #fff;
+//   text-align: center;
+//   padding: 20px;
+// }
+
+// .overlayContent {
+//   max-width: 420px;
+//   padding: 30px 20px;
+//   border-radius: 20px;
+//   background: rgba(255, 255, 255, 0.04);
+//   border: 1px solid rgba(255, 255, 255, 0.08);
+//   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+//   animation: fadeIn 1.2s ease;
+// }
+
+// .ring {
+//   font-size: 42px;
+//   margin-bottom: 15px;
+//   animation: float 2.5s ease-in-out infinite;
+// }
+
+// .inviteTop {
+//   font-size: 12px;
+//   letter-spacing: 3px;
+//   opacity: 0.6;
+//   color: white;
+//   text-transform: uppercase;
+// }
+
+// .inviteTitle {
+//   font-size: 36px;
+//   margin: 12px 0;
+//   font-weight: 500;
+//   letter-spacing: 1px;
+//   background: linear-gradient(90deg, #e7c27d, #fff, #e7c27d);
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+// }
+
+// .inviteText {
+//   font-size: 15px;
+//   line-height: 1.7;
+//   opacity: 0.85;
+//   margin-top: 10px;
+//   color: rgba(255, 255, 255, 0.899);
+// }
+
+// .inviteSub {
+//   margin-top: 10px;
+//   font-size: 14px;
+//   opacity: 0.6;
+//   font-style: italic;
+//   color: rgba(255, 255, 255, 0.899);
+
+// }
+
+// .inviteAction {
+//   display: inline-block;
+//   margin-top: 28px;
+//   font-size: 13px;
+//   letter-spacing: 2px;
+//   color: #cdcdcddb;
+//   position: relative;
+// }
+
+// .inviteAction::after {
+//   content: "";
+//   display: block;
+//   height: 1px;
+//   width: 100%;
+//   margin-top: 6px;
+//   background: linear-gradient(90deg, transparent, #e7c27d, transparent);
+// }
+
+// /* ✨ анимации */
+// @keyframes fadeIn {
+//   from {
+//     opacity: 0;
+//     transform: translateY(30px) scale(0.98);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateY(0) scale(1);
+//   }
+// }
+
+// @keyframes float {
+//   0% { transform: translateY(0); }
+//   50% { transform: translateY(-10px); }
+//   100% { transform: translateY(0); }
+// }
