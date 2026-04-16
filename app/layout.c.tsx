@@ -21,9 +21,12 @@ const LayoutClient: FC<ILayoutClientProps> = ({ children }) => {
       audioRef.current.pause();
       setPlaying(false);
     } else {
-      audioRef.current.play().then(() => {
-        setPlaying(true);
-      }).catch(() => {});
+      audioRef.current
+        .play()
+        .then(() => {
+          setPlaying(true);
+        })
+        .catch(() => {});
     }
   };
 
@@ -37,28 +40,33 @@ const LayoutClient: FC<ILayoutClientProps> = ({ children }) => {
 
   // 🎵 запуск ТОЛЬКО после клика (работает на телефонах)
   useEffect(() => {
-    if (!audioRef.current) return;
-
     const audio = audioRef.current;
+    if (!audio) return;
 
     const startAudio = () => {
       audio.muted = false;
       audio.volume = volume;
 
-      audio.play()
+      audio
+        .play()
         .then(() => setPlaying(true))
         .catch(() => {});
 
-      document.removeEventListener("click", startAudio);
-      document.removeEventListener("touchstart", startAudio);
+      // удаляем все слушатели после первого касания
+      window.removeEventListener("touchstart", startAudio);
+      window.removeEventListener("pointerdown", startAudio);
+      window.removeEventListener("click", startAudio);
     };
 
-    document.addEventListener("click", startAudio);
-    document.addEventListener("touchstart", startAudio);
+    // 👇 ВАЖНО: сразу все типы событий
+    window.addEventListener("touchstart", startAudio, { once: true });
+    window.addEventListener("pointerdown", startAudio, { once: true });
+    window.addEventListener("click", startAudio, { once: true });
 
     return () => {
-      document.removeEventListener("click", startAudio);
-      document.removeEventListener("touchstart", startAudio);
+      window.removeEventListener("touchstart", startAudio);
+      window.removeEventListener("pointerdown", startAudio);
+      window.removeEventListener("click", startAudio);
     };
   }, []);
 
@@ -66,14 +74,7 @@ const LayoutClient: FC<ILayoutClientProps> = ({ children }) => {
     <ReactQueryProvider>
       <>
         {/* 🎵 ГЛОБАЛЬНАЯ МУЗЫКА */}
-        <audio
-          ref={audioRef}
-          src="/music.mp3"
-          loop
-          preload="auto"
-          muted
-        />
-
+        <audio ref={audioRef} src="/music.mp3" loop preload="auto" muted />
         {children}
       </>
     </ReactQueryProvider>
