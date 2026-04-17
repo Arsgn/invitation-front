@@ -40,7 +40,7 @@
 .stats {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 24px;
   margin: 25px 0 35px;
   flex-wrap: wrap;
 }
@@ -114,15 +114,18 @@
 
 .searchInput {
   width: 100%;
-  max-width: 320px;
+  max-width: 350px;
   padding: 12px 16px;
 
   border-radius: 12px;
   border: 1px solid #eee;
+   box-shadow: 
+    0 15px 35px rgba(91, 91, 91, 0.12),
+    inset 0 1px 0 rgba(255,255,255,0.8);
 
   font-size: 14px;
 
-  background: #fafafa;
+  background: #ffffff;
   transition: 0.3s;
 }
 
