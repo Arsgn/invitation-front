@@ -23,41 +23,12 @@ const Home = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<"ATTENDING" | "DECLINED">("ATTENDING");
-  // const [started, setStarted] = useState(false);
 
   const { data } = useGetWeddings();
   const wedding = data?.[0];
 
-  // const audioRef = useRef<HTMLAudioElement | null>(null);
-
   const { mutate } = useCreateRSVP(wedding?.id ?? "");
 
-  // useEffect(() => {
-  //   if (!audioRef.current) return;
-
-  //   // пытаемся сразу запустить (будет muted)
-  //   audioRef.current.play().catch(() => {});
-
-  //   const enableSound = () => {
-  //     if (!audioRef.current) return;
-
-  //     audioRef.current.muted = false;
-  //     audioRef.current.play().catch(() => {});
-
-  //     window.removeEventListener("click", enableSound);
-  //   };
-
-  //   window.addEventListener("click", enableSound);
-
-  //   return () => window.removeEventListener("click", enableSound);
-  // }, []);
-
-  // useEffect(() => {
-  //   if (!audioRef.current || !started) return;
-
-  //   audioRef.current.muted = false;
-  //   audioRef.current.play().catch(() => {});
-  // }, [started]);
   useEffect(() => {
     if (!wedding) return;
 
@@ -82,44 +53,22 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [wedding]);
 
-  // ❗ только после всех хуков
   if (!wedding) return null;
 
   const weddingDay = new Date(wedding.date).getDate();
 
   const handleSubmit = () => {
+    if (!name.trim()) {
+      alert("Атыңызды жазыңыз");
+      return;
+    }
+
     mutate({ name, phone, status });
     alert("Жооп жөнөтүлдү");
   };
 
   return (
     <div className={styles.page}>
-      {/* <audio ref={audioRef} src="/music.mp3" loop preload="auto" />
-      {!started && (
-        <div className={styles.overlay} onClick={() => setStarted(true)}>
-          <div className={styles.overlayContent}>
-            <div className={styles.ring}>💍</div>
-
-            <p className={styles.inviteTop}>Урматтуу коноктор</p>
-
-            <h1 className={styles.inviteTitle}>Тойго чакыруу</h1>
-
-            <p className={styles.inviteText}>
-              Сиздерди биздин жашообуздагы эң маанилүү, эң кубанычтуу күнгө —
-              үйлөнүү тоюбузга чын жүрөктөн чакырабыз
-            </p>
-
-            <p className={styles.inviteSub}>
-              Бул күн сүйүүнүн, бакыттын жана жаңы жашоонун башталышы
-            </p>
-
-            <span className={styles.inviteAction}>
-              Ачуу үчүн акырын басыңыз
-            </span>
-          </div>
-        </div>
-      )} */}
-      {/* HERO */}
       <div className={styles.hero}>
         <img
           src="https://images.unsplash.com/photo-1519741497674-611481863552"
@@ -152,8 +101,7 @@ const Home = () => {
           өзгөчө көз ирмеми.
         </p>
         <p className={styles.inviteTex}>
-          Сиздин катышууңуз бул күндү дагы да жарык, дагы да эстен кеткис
-          кылат.
+          Сиздин катышууңуз бул күндү дагы да жарык, дагы да эстен кеткис кылат.
         </p>
         <p className={styles.inviteTex}>
           Биз менен бирге бул кубанычтуу күндү бөлүшүп, жылуулук жана сүйүү

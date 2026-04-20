@@ -4,16 +4,16 @@ namespace WEDDING {
     coupleNames: string;
     date: string;
 
-    ceremonyVenue: string;     // 👈 ДОБАВЬ
+    ceremonyVenue: string;      
     ceremonyAddress: string;
 
-    ceremonyLat: number;       // 👈 ДОБАВЬ
-    ceremonyLng: number;       // 👈 ДОБАВЬ
+    ceremonyLat: number;       
+    ceremonyLng: number;       
 
-    banquetVenue: string;      // 👈 ДОБАВЬ
-    banquetAddress: string;    // 👈 ДОБАВЬ
-    banquetLat: number;        // 👈 ДОБАВЬ
-    banquetLng: number;        // 👈 ДОБАВЬ
+    banquetVenue: string;      
+    banquetAddress: string;    
+    banquetLat: number;        
+    banquetLng: number;        
   }
 
   interface GetWeddingsRes {
