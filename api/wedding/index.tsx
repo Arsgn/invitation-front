@@ -6,7 +6,7 @@ const useGetWeddings = () =>
     queryKey: ["weddings"],
     queryFn: async () => {
       const res = await api.get("/invitation/weddings");
-      return res.data; // ✅ ВОТ ТАК
+      return res.data; 
     },
   });
 
@@ -18,7 +18,7 @@ const useGetWedding = (id: string) =>
         `/invitation/weddings/${id}`,
       );
 
-      return res.data?.data ?? null; // 👈 безопасно
+      return res.data?.data ?? null; 
     },
     enabled: !!id,
   });

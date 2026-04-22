@@ -1,10 +1,11 @@
 "use client";
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 import { useEffect, useRef, useState } from "react";
 import styles from "./Home.module.scss";
 import { useGetWeddings } from "@/api/wedding";
 import { useCreateRSVP } from "@/api/rsvp";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Home = () => {
   const [timeLeft, setTimeLeft] = useState<{
@@ -53,7 +54,9 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [wedding]);
 
-  if (!wedding) return null;
+  if (!wedding) {
+    return <div>Загрузка...</div>;
+  }
 
   const weddingDay = new Date(wedding.date).getDate();
 
@@ -70,9 +73,14 @@ const Home = () => {
   return (
     <div className={styles.page}>
       <div className={styles.hero}>
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1519741497674-611481863552"
           className={styles.heroImage}
+          alt="Wedding Hero"
+          width={1200}
+          height={800}
+          priority
+          unoptimized
         />
         <div className={styles.topText}>
           Биздин үйлөнүү күнү <br /> Сүйүүнүн салтанаты
@@ -218,9 +226,24 @@ const Home = () => {
       <section className={styles.gallery}>
         <h2>Биздин көз ирмемдер</h2>
         <div className={styles.photos}>
-          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486" />
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552" />
-          <img src="https://images.unsplash.com/photo-1529636798458-92182e662485" />
+          <Image
+            src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486"
+            alt="Wedding Photo 1"
+            width={400}
+            height={300}
+          />
+          <Image
+            src="https://images.unsplash.com/photo-1519741497674-611481863552"
+            alt="Wedding Photo 2"
+            width={400}
+            height={300}
+          />
+          <Image
+            src="https://images.unsplash.com/photo-1529636798458-92182e662485"
+            alt="Wedding Photo 3"
+            width={400}
+            height={300}
+          />
         </div>
       </section>
 
